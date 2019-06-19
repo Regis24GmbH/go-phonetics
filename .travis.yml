@@ -11,15 +11,15 @@ before_script:
   - go get -u golang.org/x/lint/golint
   - go get -u github.com/golang/dep/cmd/dep
   - go get golang.org/x/tools/cmd/cover
-#  - go get github.com/mattn/goveralls
+  - go get github.com/mattn/goveralls
 
 script:
   - make lint
   - make test
   - make race
   - make coverage
-#  - go test $(shell go list ./... | grep -v /vendor/) -race -coverprofile=coverage.txt -covermode=atomic
+  - go test $(shell go list ./... | grep -v /vendor/) -race -coverprofile=coverage.txt -covermode=atomic
 
-#after_success:
-#  - $GOPATH/bin/goveralls -service=travis-ci
+after_success:
+  - $GOPATH/bin/goveralls -service=travis-ci
 #  - bash <(curl -s https://codecov.io/bash)
