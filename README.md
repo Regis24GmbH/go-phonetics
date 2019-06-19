@@ -11,7 +11,7 @@
 
 # go-phonetics
 
-> A package ...
+> A package that contain an implementation of cologne phonetics (Kölner Phonetik)
 
 Gonetic implements the Kölner Phonetik (Cologne Phonetic) algorithm in Go. It 
 is a translation of the php implementation of 
