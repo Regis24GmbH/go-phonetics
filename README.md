@@ -2,6 +2,7 @@
 [![Github Tag][githubtag-image]][githubtag-url]
 
 [![Coverage Status][coveralls-image]][coveralls-url]
+[![Maintainability][codeclimate-image]][codeclimate-url]
 
 [![Go Report Card][goreport-image]][goreport-url]
 [![GoDoc][godoc-image]][godoc-url]
@@ -54,6 +55,9 @@ Special thanks to [@stefanberkner](https://github.com/stefanberkner)
 
 [coveralls-image]: https://coveralls.io/repos/github/Regis24GmbH/go-phonetics/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/github/Regis24GmbH/go-phonetics?branch=master
+
+[codeclimate-image]: https://api.codeclimate.com/v1/badges/beaa980f05b75209c940/maintainability
+[codeclimate-url]: https://codeclimate.com/github/Regis24GmbH/go-phonetics/maintainability
 
 [goreport-image]: https://goreportcard.com/badge/github.com/Regis24GmbH/go-phonetics
 [goreport-url]: https://goreportcard.com/report/github.com/Regis24GmbH/go-phonetics
