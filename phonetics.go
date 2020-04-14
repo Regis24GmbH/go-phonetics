@@ -4,7 +4,7 @@ import (
 	"regexp"
 	"strings"
 
-	godiacritics "gopkg.in/Regis24GmbH/go-diacritics.v1"
+	godiacritics "gopkg.in/Regis24GmbH/go-diacritics.v2"
 )
 
 // NewPhoneticCode takes a word an returns the phonetic code.
