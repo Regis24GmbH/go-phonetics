@@ -1,0 +1,7 @@
+# golang.org/x/text v0.3.2
+golang.org/x/text/runes
+golang.org/x/text/transform
+golang.org/x/text/unicode/norm
+# gopkg.in/Regis24GmbH/go-diacritics.v2 v2.0.1
+## explicit
+gopkg.in/Regis24GmbH/go-diacritics.v2
