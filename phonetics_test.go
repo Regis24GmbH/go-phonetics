@@ -3,19 +3,20 @@ package gophonetics
 import "testing"
 
 type phonetic struct {
-	str      string
-	phonCode string
+	str                          string
+	phonCode                     string
+	phonCodeWithoutDeduplication string
 }
 
 var phonetics = []phonetic{
-	{str: "Müller-Lüdenscheidt", phonCode: "65752682"},
-	{str: "Wikipedia", phonCode: "3412"},
-	{str: "Breschnew", phonCode: "17863"},
-	{str: "c", phonCode: "8"},
-	{str: "ca", phonCode: "4"},
-	{str: "dc", phonCode: "8"},
-	{str: "", phonCode: ""},
-	{str: "Ł", phonCode: "5"},
+	{str: "Müller-Lüdenscheidt", phonCode: "65752682", phonCodeWithoutDeduplication: "65575268822"},
+	{str: "Wikipedia", phonCode: "3412", phonCodeWithoutDeduplication: "3412"},
+	{str: "Breschnew", phonCode: "17863", phonCodeWithoutDeduplication: "178863"},
+	{str: "c", phonCode: "8", phonCodeWithoutDeduplication: "8"},
+	{str: "ca", phonCode: "4", phonCodeWithoutDeduplication: "4"},
+	{str: "dc", phonCode: "8", phonCodeWithoutDeduplication: "88"},
+	{str: "", phonCode: "", phonCodeWithoutDeduplication: ""},
+	{str: "Ł", phonCode: "5", phonCodeWithoutDeduplication: "5"},
 }
 
 func TestPhonetics(t *testing.T) {
@@ -28,8 +29,18 @@ func TestPhonetics(t *testing.T) {
 		}
 	}
 }
+func TestPhoneticsWithoutDeduplication(t *testing.T) {
+	for _, p := range phonetics {
+		code := NewPhoneticCodeWithoutDeduplication(p.str)
 
-//--------------------------------------------------------------------------
+		if code != p.phonCodeWithoutDeduplication {
+			t.Errorf("Error: expected %v, got %v",
+				p.phonCodeWithoutDeduplication, code)
+		}
+	}
+}
+
+// --------------------------------------------------------------------------
 
 type duplicate struct {
 	strFull     string
