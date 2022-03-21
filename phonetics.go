@@ -7,8 +7,20 @@ import (
 	godiacritics "gopkg.in/Regis24GmbH/go-diacritics.v2"
 )
 
-// NewPhoneticCode takes a word an returns the phonetic code.
+// NewPhoneticCode takes a word and returns the phonetic code.
 func NewPhoneticCode(word string) string {
+	phoneticCode := getPhoneticCode(word)
+
+	return removeDuplicates(phoneticCode)
+}
+
+// NewPhoneticCodeWithoutDeduplication takes a word and returns the phonetic code without deduplication.
+func NewPhoneticCodeWithoutDeduplication(word string) string {
+	return getPhoneticCode(word)
+}
+
+// --------------------------------------------------------------------------
+func getPhoneticCode(word string) string {
 	code := ""
 
 	// only lower case
@@ -117,11 +129,10 @@ func NewPhoneticCode(word string) string {
 		}
 	}
 
-	return removeDuplicates(phoneticcode)
+	return phoneticcode
 }
 
-//--------------------------------------------------------------------------
-
+// --------------------------------------------------------------------------
 func removeDuplicates(oldString string) string {
 	// Add \122 at the end, otherwise there is one char missing; see 'hsz':
 	// http://stackoverflow.com/questions/7780794/javascript-regex-remove-duplicate-characters
@@ -143,7 +154,7 @@ func removeDuplicates(oldString string) string {
 	return newString
 }
 
-//--------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 
 func replaceChars(word string) string {
 	oldChars := []string{"v", "w", "j", "y", "ph"}
@@ -156,4 +167,4 @@ func replaceChars(word string) string {
 	return word
 }
 
-//--------------------------------------------------------------------------
+// --------------------------------------------------------------------------
