@@ -9,18 +9,6 @@ import (
 
 // NewPhoneticCode takes a word and returns the phonetic code.
 func NewPhoneticCode(word string) string {
-	phoneticCode := getPhoneticCode(word)
-
-	return removeDuplicates(phoneticCode)
-}
-
-// NewPhoneticCodeWithoutDeduplication takes a word and returns the phonetic code without deduplication.
-func NewPhoneticCodeWithoutDeduplication(word string) string {
-	return getPhoneticCode(word)
-}
-
-// --------------------------------------------------------------------------
-func getPhoneticCode(word string) string {
 	code := ""
 
 	// only lower case
@@ -34,8 +22,8 @@ func getPhoneticCode(word string) string {
 	reg := regexp.MustCompile("[^a-z]+")
 	word = reg.ReplaceAllString(word, "")
 
-	wordlen := len(word)
-	if wordlen == 0 {
+	wordLength := len(word)
+	if wordLength == 0 {
 		return ""
 	}
 	char := strings.Split(word, "")
@@ -45,7 +33,7 @@ func getPhoneticCode(word string) string {
 	// special cases
 	if char[0] == "c" {
 		code = "8"
-		if wordlen > 1 {
+		if wordLength > 1 {
 			switch char[1] {
 			case "a", "h", "k", "l", "o", "q", "r", "u", "x":
 				code = "4"
@@ -56,14 +44,14 @@ func getPhoneticCode(word string) string {
 		x = 0
 	}
 
-	for ; x < wordlen; x++ {
+	for ; x < wordLength; x++ {
 		switch char[x] {
 		case "a", "e", "i", "o", "u":
 			code += "0"
 		case "b", "p":
 			code += "1"
 		case "d", "t":
-			if x+1 < wordlen {
+			if x+1 < wordLength {
 				switch char[x+1] {
 				case "c", "s", "z":
 					code += "8"
@@ -78,7 +66,7 @@ func getPhoneticCode(word string) string {
 		case "g", "k", "q":
 			code += "4"
 		case "c":
-			if x+1 < wordlen {
+			if x+1 < wordLength {
 				switch char[x+1] {
 				case "a", "h", "k", "o", "q", "u", "x":
 					switch char[x-1] {
@@ -115,21 +103,28 @@ func getPhoneticCode(word string) string {
 		}
 	}
 
-	// remove all "0", except at the beginning
-	codelen := len(code)
-	if codelen == 0 {
+	code = removeDuplicates(code)
+
+	if len(code) == 0 {
 		return ""
 	}
-	codeChars := strings.Split(code, "")
-	phoneticcode := codeChars[0]
 
-	for x := 1; x < codelen; x++ {
+	phoneticCode := removeAllZerosExceptAtTheBeginning(code)
+
+	return phoneticCode
+}
+
+// --------------------------------------------------------------------------
+func removeAllZerosExceptAtTheBeginning(code string) string {
+	codeChars := strings.Split(code, "")
+	phoneticCode := codeChars[0]
+
+	for x := 1; x < len(code); x++ {
 		if codeChars[x] != "0" {
-			phoneticcode += codeChars[x]
+			phoneticCode += codeChars[x]
 		}
 	}
-
-	return phoneticcode
+	return phoneticCode
 }
 
 // --------------------------------------------------------------------------
