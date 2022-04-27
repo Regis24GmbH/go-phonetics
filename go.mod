@@ -1,4 +1,4 @@
-module gopkg.in/Regis24GmbH/go-phonetics.v2
+module gopkg.in/Regis24GmbH/go-phonetics.v3
 
 go 1.14
 
