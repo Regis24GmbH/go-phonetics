@@ -103,11 +103,11 @@ func NewPhoneticCode(word string) string {
 		}
 	}
 
-	code = removeDuplicates(code)
-
 	if len(code) == 0 {
 		return ""
 	}
+
+	code = removeDuplicates(code)
 
 	phoneticCode := removeAllZerosExceptAtTheBeginning(code)
 
@@ -133,12 +133,12 @@ func removeDuplicates(oldString string) string {
 	// http://stackoverflow.com/questions/7780794/javascript-regex-remove-duplicate-characters
 	oldString += "\122"
 	oldStringSlice := strings.Split(oldString, "")
-	oldlen := len(oldStringSlice)
+	oldLength := len(oldStringSlice)
 	newString := ""
 
 	char := oldStringSlice[0]
 
-	for i := 1; i < oldlen; i++ {
+	for i := 1; i < oldLength; i++ {
 		if char != oldStringSlice[i] {
 			newString += char
 		}
@@ -150,7 +150,6 @@ func removeDuplicates(oldString string) string {
 }
 
 // --------------------------------------------------------------------------
-
 func replaceChars(word string) string {
 	oldChars := []string{"v", "w", "j", "y", "ph"}
 	newChars := []string{"f", "f", "i", "i", "f"}
