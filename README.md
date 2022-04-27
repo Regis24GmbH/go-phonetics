@@ -23,13 +23,13 @@ is a translation of the php implementation of
 To get the lastest tagged version of package, execute:
 
 ```
-go get gopkg.in/Regis24GmbH/go-phonetics.v2
+go get gopkg.in/Regis24GmbH/go-phonetics.v3
 ```
 
 To import this package, add the following line to your code:
 
 ```
-import "gopkg.in/Regis24GmbH/go-phonetics.v2"
+import "gopkg.in/Regis24GmbH/go-phonetics.v3"
 ```
 
 This is a code example:
